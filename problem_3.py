@@ -55,6 +55,28 @@ def qualify():
 
     """
     # write your code below this line
+    def parse_money(text):
+        # remove currency formatting
+        cleaned = text.replace("$", "").replace(",", "").strip()
+        return float(cleaned)
+
+    try:
+        print("Welcome to the credit card qualifier!")
+        income = parse_money(input("How much do you make per year? "))
+        owns_home = input("Do you own your home? (y/n) ").strip().lower()
+
+        if income < 30000:
+            print("Sorry, you don't qualify. Your income is too low.")
+        elif owns_home == "y":
+            print("You qualify!")
+        else:
+            rent = parse_money(input("How much do you pay in rent per month? "))
+            if rent <= income * 0.05:
+                print("You qualify!")
+            else:
+                print("Sorry, you don't qualify. Your rent is too high.")
+    except Exception:
+        print("Sorry, you don't qualify. Your income is too low.")
 
 
 # -------------------------------------- #

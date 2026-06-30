@@ -47,6 +47,25 @@ def generate_shopping_list():
 
     """
     # write your answer below this line
+    shopping_list = []
+
+    print("Welcome to the shopping list generator!")
+
+    while True:
+        item = input("Enter an item to your shopping list: ").strip().lower()
+
+        if item in ("finished", "done"):
+            break
+
+        amount = input(f"How many {item} would you like? ").strip().lower()
+        shopping_list.append((item, amount))
+
+    print()
+    print("Here is your complete shopping list:")
+    for item, amount in shopping_list:
+        print(f"- {item} ({amount})")
+    print()
+    print("Thank you!")
 
 
 # -------------------------------------- #

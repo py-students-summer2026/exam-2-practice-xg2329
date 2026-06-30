@@ -24,7 +24,47 @@ def get_valid_day():
 
     :returns: The day the user entered, as an integer.  I.e., 1 for Monday, 2 for Tuesday, 3 for Wednesday etc.
     """
-    # write your code below this line
+    day_names = {
+        "monday": 1,
+        "mon": 1,
+        "tuesday": 2,
+        "tue": 2,
+        "tues": 2,
+        "wednesday": 3,
+        "wed": 3,
+        "weds": 3,
+        "thursday": 4,
+        "thu": 4,
+        "thur": 4,
+        "thurs": 4,
+        "friday": 5,
+        "fri": 5,
+        "saturday": 6,
+        "sat": 6,
+        "sunday": 7,
+        "sun": 7,
+    }
+
+    while True:
+        try:
+            response = input("Enter the day of the week: ").strip()
+            lowered = response.lower()
+
+            if lowered.isdigit() or (
+                lowered.startswith("-") and lowered[1:].isdigit()
+            ):
+                day_number = int(lowered)
+                if 1 <= day_number <= 7:
+                    return day_number
+                print("Invalid number!")
+            elif lowered.isalpha():
+                if lowered in day_names:
+                    return day_names[lowered]
+                print("Invalid day!")
+            else:
+                print("Huh?")
+        except Exception:
+            print("Huh?")
 
 
 # -------------------------------------- #
